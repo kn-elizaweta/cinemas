@@ -5,5 +5,6 @@ FactoryBot.define do
     price { rand(200..800) }
     date { Faker::Date.between(from: '2023-01-01', to: '2024-01-01')}
     association(:movie)
+    association(:cinema)
   end
 end

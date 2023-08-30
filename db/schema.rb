@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_16_122105) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_27_183148) do
   create_table "cinemas", force: :cascade do |t|
     t.string "name"
     t.string "cinema_hall_count"
@@ -44,6 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_122105) do
     t.datetime "updated_at", null: false
     t.string "price"
     t.datetime "date"
+    t.integer "cinema_id"
+    t.index ["cinema_id"], name: "index_sessions_on_cinema_id"
     t.index ["movie_id"], name: "index_sessions_on_movie_id"
   end
 
@@ -53,6 +55,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_16_122105) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users_cinemas", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "cinema_id"
+    t.integer "discount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cinema_id"], name: "index_users_cinemas_on_cinema_id"
+    t.index ["user_id"], name: "index_users_cinemas_on_user_id"
   end
 
   create_table "viewers", force: :cascade do |t|
