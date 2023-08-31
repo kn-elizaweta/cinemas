@@ -1,7 +1,12 @@
 class CinemasController < ApplicationController
   def index
     cinema = Cinema.all
-    render json: cinema
+    render json: cinema, each_serializer: Cinemas::CinemaIndexSerializer
+  end
+
+  def show
+    cinema = Cinema.find(params[:id])
+    render json: cinema, serializer: Cinemas::CinemaShowSerializer
   end
 
   def create
