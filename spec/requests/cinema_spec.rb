@@ -8,6 +8,14 @@ RSpec.describe "Cinemas", type: :request do
 
       expect(JSON.parse(body).first['name']).to eq(cinema.name)
     end
+    it "index with params" do
+      cinema = FactoryBot.create(:cinema)
+      cinema1 = FactoryBot.create(:cinema)
+      movie = FactoryBot.create(:movie)
+      cinemas_movies = CinemasMovie.create(cinema_id: cinema.id, movie_id: movie.id)
+      get "/cinemas?movie_id=#{movie.id}"
+      expect(JSON.parse(body).count).to eq(1)
+    end
   end
 
   describe "POST /create" do

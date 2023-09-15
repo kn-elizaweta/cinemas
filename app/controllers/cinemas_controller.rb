@@ -1,6 +1,7 @@
 class CinemasController < ApplicationController
   def index
     cinema = Cinema.all
+    cinema = Filter::CinemaFilm.filter(params,cinema)
     render json: cinema, each_serializer: Cinemas::CinemaIndexSerializer
   end
 
