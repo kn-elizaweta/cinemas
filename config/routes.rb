@@ -24,5 +24,10 @@ Rails.application.routes.draw do
       put "update_status"
     end
   end
+  resources :authorizations do
+    collection do
+      delete "destroy"
+    end
+end
 end
 
