@@ -29,5 +29,11 @@ Rails.application.routes.draw do
       delete "destroy"
     end
 end
+resources :movies do
+  member do
+    patch "update_avatar"
+    get "get_avatar"
+  end
+end
 end
 
