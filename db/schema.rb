@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_23_161603) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_26_180106) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -56,12 +56,34 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_23_161603) do
     t.index ["movie_id"], name: "index_cinemas_movies_on_movie_id"
   end
 
+  create_table "grades", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "movie_id"
+    t.integer "grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_grades_on_movie_id"
+    t.index ["user_id"], name: "index_grades_on_user_id"
+  end
+
   create_table "movies", force: :cascade do |t|
     t.string "name"
     t.string "genre"
     t.string "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "movie_id"
+    t.integer "grade_id"
+    t.text "review"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grade_id"], name: "index_reviews_on_grade_id"
+    t.index ["movie_id"], name: "index_reviews_on_movie_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
