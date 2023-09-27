@@ -3,7 +3,12 @@ class MoviesController < ApplicationController
   def index
     movies = Movies.all
     movies = Filter::Movies.filter(params, movies)
-    render json: movies
+    render json: movies, each_serializer: Movies::MovieIndexSerializer
+  end
+
+  def show
+    movie = Movie.find(params[:id])
+    render json: movie, serializer: Movies::MovieShowSerializer
   end
 
   def update
