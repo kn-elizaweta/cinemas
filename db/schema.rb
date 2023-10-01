@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_26_180106) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_01_191611) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_26_180106) do
   create_table "grades", force: :cascade do |t|
     t.integer "user_id"
     t.integer "movie_id"
-    t.integer "grade"
+    t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_grades_on_movie_id"
@@ -78,7 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_26_180106) do
     t.integer "user_id"
     t.integer "movie_id"
     t.integer "grade_id"
-    t.text "review"
+    t.text "review_text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["grade_id"], name: "index_reviews_on_grade_id"

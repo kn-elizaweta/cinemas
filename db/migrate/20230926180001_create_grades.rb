@@ -3,7 +3,7 @@ class CreateGrades < ActiveRecord::Migration[7.0]
     create_table :grades do |t|
      t.references :user
      t.references :movie
-     t.integer :grade 
+     t.integer :rating 
       t.timestamps
     end
   end
